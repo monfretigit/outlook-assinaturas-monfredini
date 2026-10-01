@@ -70,15 +70,6 @@ function insert_auto_signature(compose_type, user_info, eventObj) {
 
   console.log("Conta detectada:", email);
 
-Office.context.mailbox.item.body.setAsync(
-  "<h2>ETAPA 2 OK</h2><p>Conta detectada: <b>" + email + "</b></p>",
-  { coercionType: "html" },
-  function () {
-    eventObj.completed();
-  }
-);
-
-return;
 
   let signature_info;
 
