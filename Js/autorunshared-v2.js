@@ -26,6 +26,8 @@ function checkSignature(eventObj) {
         if (asyncResult.status === "succeeded") {
 
           console.log("=== ANTES DE CHAMAR INSERT ===");
+          console.log("TIPO INSERT:", typeof insert_auto_signature);
+          console.log("FUNCAO INSERT:", insert_auto_signature.toString());
           insert_auto_signature(
             asyncResult.value.composeType,
             null,
