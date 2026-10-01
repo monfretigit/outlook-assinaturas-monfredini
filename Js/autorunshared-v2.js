@@ -58,6 +58,7 @@ function checkSignature(eventObj) {
  * @param {*} eventObj Office event object
  */
 function insert_auto_signature(compose_type, user_info, eventObj) {
+  console.log("=== ENTROU INSERT_AUTO_SIGNATURE ===");
 
   const email = (
     Office.context.mailbox.userProfile.emailAddress || ""
