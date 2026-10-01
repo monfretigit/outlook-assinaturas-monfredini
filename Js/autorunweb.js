@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation.
+﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 // This file contains code only used by autorunweb.html when loaded in Outlook on the web.
@@ -13,7 +13,7 @@ Office.onReady();
  * @param {*} user_info Information details about the user
  * @param {*} eventObj Office event object
  */
-function insert_auto_signature(compose_type, user_info, eventObj) {
+function insert_auto_signature_web_legacy(compose_type, user_info, eventObj) {
   let template_name = get_template_name(compose_type);
   if (!template_name || template_name === "none") {
     // No template assigned for this compose type; skip signature insertion.
@@ -71,3 +71,4 @@ function set_body(signatureDetails, eventObj) {
     );
   }
 }
+
