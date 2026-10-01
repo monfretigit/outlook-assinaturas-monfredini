@@ -12,14 +12,39 @@
  */
 function checkSignature(eventObj) {
 
-  Office.context.mailbox.item.body.setAsync(
-    "<h2>TESTE EVENTO OK</h2><p>O OnNewMessageCompose foi executado.</p>",
-    { coercionType: "html" },
-    function (asyncResult) {
-      eventObj.completed();
-    }
-  );
+  console.log("Evento de assinatura iniciado");
 
+  if (Office.context.mailbox.item.getComposeTypeAsync) {
+
+    Office.context.mailbox.item.getComposeTypeAsync(
+      function (asyncResult) {
+
+        if (asyncResult.status === "succeeded") {
+
+          insert_auto_signature(
+            asyncResult.value.composeType,
+            null,
+            eventObj
+          );
+
+        } else {
+
+          console.log("Nao foi possivel identificar o tipo de composicao.");
+          eventObj.completed();
+
+        }
+      }
+    );
+
+  } else {
+
+    insert_auto_signature(
+      "newMail",
+      null,
+      eventObj
+    );
+
+  }
 }
 /**
  * For Outlook on Windows and on Mac only. Insert signature into appointment or message.
@@ -35,6 +60,16 @@ function insert_auto_signature(compose_type, user_info, eventObj) {
   ).toLowerCase();
 
   console.log("Conta detectada:", email);
+
+Office.context.mailbox.item.body.setAsync(
+  "<h2>ETAPA 2 OK</h2><p>Conta detectada: <b>" + email + "</b></p>",
+  { coercionType: "html" },
+  function () {
+    eventObj.completed();
+  }
+);
+
+return;
 
   let signature_info;
 
