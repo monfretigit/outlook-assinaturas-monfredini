@@ -18,6 +18,10 @@ function checkSignature(eventObj) {
 
     Office.context.mailbox.item.getComposeTypeAsync(
       function (asyncResult) {
+        console.log("=== GETCOMPOSETYPE CALLBACK ===");
+        console.log("Status:", asyncResult.status);
+        console.log("Valor:", asyncResult.value);
+        console.log("Erro:", asyncResult.error);
 
         if (asyncResult.status === "succeeded") {
 
