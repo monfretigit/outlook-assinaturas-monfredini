@@ -25,12 +25,14 @@ function checkSignature(eventObj) {
 
         if (asyncResult.status === "succeeded") {
 
+          console.log("=== ANTES DE CHAMAR INSERT ===");
           insert_auto_signature(
             asyncResult.value.composeType,
             null,
             eventObj
           );
 
+          console.log("=== DEPOIS DE CHAMAR INSERT ===");
         } else {
 
           console.log("Nao foi possivel identificar o tipo de composicao.");
